@@ -1,6 +1,8 @@
 <template>
-  <div class="home">
-    <blog-component v-for="blog in blogs" :key="blog.id" :blogProp="blog" />
+  <div class="home container-fluid">
+    <div class="row">
+      <blog-component v-for="blog in blogs" :key="blog.id" :blogProp="blog" />
+    </div>
   </div>
 </template>
 
