@@ -7,5 +7,13 @@
 <script>
 export default {
   name: "home",
+  mounted() {
+    this.$store.dispatch("getAllBlogs");
+  },
+  computed: {
+    blogs() {
+      return this.$store.state.blogs;
+    },
+  },
 };
 </script>

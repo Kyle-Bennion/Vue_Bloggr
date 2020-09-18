@@ -8,10 +8,14 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     profile: {},
+    blogs: [],
   },
   mutations: {
     setProfile(state, profile) {
       state.profile = profile;
+    },
+    setBlogs(state, blogs ){
+      state.blogs = blogs
     },
   },
   actions: {
