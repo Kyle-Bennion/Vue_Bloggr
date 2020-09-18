@@ -25,9 +25,11 @@ export default new Vuex.Store({
     },
     async getAllBlogs({commit}, dispatch){
       try {
-        let res
+        let res = await api.get("blogs")
+        commit("setBlogs", res.data)
+        console.log(res)
       } catch (error) {
-        
+        console.error(error);
       }
     }
   },
