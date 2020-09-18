@@ -1,10 +1,11 @@
 <template>
   <div class="home">
-    <h1>This is the screen that is visible so far</h1>
+    <blog-component v-for="blog in blogs" :key="blog.id" :blogProp="blog" />
   </div>
 </template>
 
 <script>
+import blogComponent from "../components/BlogComponent";
 export default {
   name: "home",
   mounted() {
@@ -14,6 +15,9 @@ export default {
     blogs() {
       return this.$store.state.blogs;
     },
+  },
+  components: {
+    blogComponent,
   },
 };
 </script>
