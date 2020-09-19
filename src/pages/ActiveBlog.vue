@@ -1,5 +1,6 @@
 <template>
-  <div v-if="blog.id" class="card" style="width: 18rem;">
+<div class="row d-flex justify-content-around">
+  <div v-if="blog.id" class="card col-6">
       <h6 class="card-title card-header text-center">{{profile.name}}</h6>
     <img v-if="blog.imgUrl" class="card-img-top" :src="blog.imgUrl" alt="Card image cap" />
     <img v-else class="card-img-top" :src="profile.picture || 'https://images-na.ssl-images-amazon.com/images/I/61TJ9b3IegL._AC_SL1500_.jpg' " alt="Card image cap" />
@@ -8,6 +9,7 @@
       <p class="card-text">{{blog.body}}</p>
     </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -27,5 +29,9 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+img{
+  height: 250px;
+  width: 250px;
+}
 </style>
