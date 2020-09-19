@@ -22,6 +22,9 @@ export default new Vuex.Store({
     setActiveBlog(state, blog){
       state.activeBlog = blog
     },
+    addBlog(state, blog){
+      state.blogs.push(blog)
+    }
   },
   actions: {
     async getProfile({ commit }) {
@@ -45,6 +48,16 @@ export default new Vuex.Store({
       try {
         let res = await api.get("blogs/" + blogId)
         commit("setActiveBlog", res.data)
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    async createBlog({commit}, newBlog){
+      try {
+        let res = await api.post("blogs", newBlog)
+        commit("addBlog", res.data)
+        commit("setActiveBlog", res.data.id)
+        router.push({name: "ActiveBlog", params:{id: res.data.id}})
       } catch (error) {
         console.error(error);
       }
