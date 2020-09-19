@@ -7,6 +7,7 @@
     <div class="card-body">
       <h5 class="card-title">{{blog.title}}</h5>
       <p class="card-text">{{blog.body}}</p>
+      <button class="btn btn-danger" @click="deleteBlog">Delete</button>
     </div>
   </div>
 </div>
@@ -18,6 +19,9 @@ export default {
   mounted() {
     this.$store.dispatch("getActiveBlog", this.$route.params.blogId);
   },
+  data(){
+    return {}
+  },
   computed: {
     blog() {
       return this.$store.state.activeBlog;
@@ -26,6 +30,11 @@ export default {
       return this.$store.state.profile
     }
   },
+  methods: {
+    deleteBlog(){
+      this.$store.dispatch('deleteBlog', this.blog._id)
+    }
+  }
 };
 </script>
 

@@ -21,6 +21,9 @@ export default {
     getActiveBlog() {
       this.$router.push({ name: "ActiveBlog", params: {} });
     },
+    deleteBlog(){
+      this.$store.dispatch("deleteBlog", this.blogId)
+    }
   },
 };
 </script>
