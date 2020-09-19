@@ -5,6 +5,7 @@ import Home from "../pages/Home.vue";
 // @ts-ignore
 import Profile from "../pages/Profile.vue";
 import { authGuard } from "@bcwdev/auth0-vue";
+// @ts-ignore
 import ActiveBlog from "../pages/ActiveBlog";
 
 Vue.use(VueRouter);
