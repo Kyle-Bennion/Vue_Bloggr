@@ -1,6 +1,6 @@
 <template>
   <div class="home container-fluid">
-    <div class="row">
+    <div class="row col-12">
       <blog-component v-for="blog in blogs" :key="blog.id" :blogProp="blog" />
     </div>
   </div>

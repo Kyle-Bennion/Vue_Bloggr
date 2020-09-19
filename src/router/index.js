@@ -27,7 +27,6 @@ const routes = [
     component: ActiveBlog,
     beforeEnter: authGuard,
   },
-
 ];
 
 const router = new VueRouter({
