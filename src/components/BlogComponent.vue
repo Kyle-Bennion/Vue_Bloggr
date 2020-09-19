@@ -1,5 +1,5 @@
 <template>
-  <div class="row col-6">
+  <div class="col-3 p-2">
     <router-link
       :to="{name:'ActiveBlog', params:{blogId: blogProp.id}}"
       class="card text-dark spcbkg"
