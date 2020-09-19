@@ -49,12 +49,5 @@ export default new Vuex.Store({
         console.error(error);
       }
     }
-    async getComments({commit}, dispatch){
-      try {
-        
-      } catch (error) {
-        console.error(error);
-      }
-    }
   },
 });
