@@ -60,6 +60,9 @@ export default {
       this.$store.dispatch("createBlog", this.newBlog);
       this.newBlog = {}
     },
+    deleteBlog(){
+      this.$store.dispatch("deleteBlog", this.blogId)
+    }
   },
   components: {},
 };
