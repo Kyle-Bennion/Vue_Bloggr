@@ -27,11 +27,24 @@
           <button type="submit" class="btn btn-warning">Edit Post</button>
         </form>
     </div>
+    <div>
+            <form class="form-inline" @submit.prevent="addComment">
+      <button class="btn btn-info" type="submit">Comment</button>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="New Comment"
+            aria-describedby="helpId"
+            v-model="commentData.body"
+          />
+          </form>
+    </div>
   </div>
 </div>
 </template>
 
 <script>
+import CommentComponent from "../components/CommentComponent.vue"
 export default {
   name: "active-blog",
   mounted() {
@@ -39,15 +52,23 @@ export default {
   },
   data(){
     return {
-      blogData: {}, editToggle: false
+      blogData: {}, editToggle: false,
+      commentData: {
+        creatorEmail: this.$store.state.profile.email,
+        blog: this.$route.params.blogId
+      }
     };
   },
+
   computed: {
     blog() {
       return this.$store.state.activeBlog;
     },
     profile(){
       return this.$store.state.profile
+    },
+    comment(){
+      return this.$store.state.comments;
     }
   },
   methods: {
@@ -58,6 +79,9 @@ export default {
       this.blogData.id = this.$route.params.blogId;
       this.$store.dispatch("editBlog", this.blogData);
       this.editToggle = false;
+    },
+    addComment(){
+      this.$store.dispatch("createComment", this.newComment);
     }
   }
 };

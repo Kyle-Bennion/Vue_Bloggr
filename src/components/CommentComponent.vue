@@ -1,7 +1,8 @@
 <template>
-  <div class="component">
+  <div class="CommentComponent">
+    <div>
 
-
+    </div>
   </div>
 </template>
 
