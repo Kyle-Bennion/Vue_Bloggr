@@ -8,6 +8,24 @@
       <h5 class="card-title">{{blog.title}}</h5>
       <p class="card-text">{{blog.body}}</p>
       <button class="btn btn-danger" @click="deleteBlog">Delete</button>
+      <button class="btn btn-warning" @click="editToggle = !editToggle">Edit</button>
+      <form class="form-inline" @submit.prevent="editBlog" v-if="editToggle">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="New Post Title"
+            aria-describedby="helpId"
+            v-model="blogData.title"
+          />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="New Body"
+            aria-describedby="helpId"
+            v-model="blogData.body"
+          />
+          <button type="submit" class="btn btn-warning">Edit Post</button>
+        </form>
     </div>
   </div>
 </div>
@@ -20,7 +38,9 @@ export default {
     this.$store.dispatch("getActiveBlog", this.$route.params.blogId);
   },
   data(){
-    return {}
+    return {
+      blogData: {}, editToggle: false
+    };
   },
   computed: {
     blog() {
@@ -33,6 +53,11 @@ export default {
   methods: {
     deleteBlog(){
       this.$store.dispatch('deleteBlog', this.blog._id)
+    },
+    editBlog(){
+      this.blogData.id = this.$route.params.blogId;
+      this.$store.dispatch("editBlog", this.blogData);
+      this.editToggle = false;
     }
   }
 };
