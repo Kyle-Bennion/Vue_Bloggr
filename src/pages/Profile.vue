@@ -3,7 +3,7 @@
     <div class="about text-center">
     <h1>Welcome {{ profile.name }}</h1>
     <img class="rounded" :src="profile.picture" alt="" />
-    <div class="row card col-6">
+    <div class="row card col-6 text-center crdclr">
               <form class="form-inline" @submit.prevent="createBlog">
           <div class="form-group">
             <input
@@ -13,6 +13,13 @@
               placeholder="Title"
               aria-describedby="helpId"
             />
+              <input
+              type="text"
+              class="form-control"
+              v-model="newBlog.body"
+              placeholder="New Blog"
+              aria-describedby="helpId"
+            />
             <input
               type="text"
               class="form-control"
@@ -20,12 +27,8 @@
               placeholder="Img Url"
               aria-describedby="helpId"
             />
-              <div class="form-group">
-    <label for="exampleFormControlTextarea1"></label>
-    <textarea class="form-control" placeholder="New Blog" id="exampleFormControlTextarea1" rows="3"></textarea>
-  </div>
           </div>
-          <button type="submit" class="btn btn-success">
+          <button type="submit" class="btn btn-success text-dark">
             <i class="fa fa-plus" aria-hidden="true">NewBlog</i>
           </button>
         </form>
@@ -38,9 +41,14 @@
 <script>
 export default {
   name: "profile",
+  mounted(){
+    this.$store.dispatch("getProfile")
+  },
   data() {
     return {
-      newBlog:{}
+      newBlog:{
+        creatorEmail: this.$store.state.profile.email,
+      }
     };
   },
   computed: {
@@ -50,9 +58,7 @@ export default {
   methods: {
     createBlog() {
       this.$store.dispatch("createBlog", this.newBlog);
-      for (let key in this.newBlog) {
-        this.newBlog[key] = null;
-      }
+      this.newBlog = {}
     },
   },
   components: {},
@@ -61,4 +67,7 @@ export default {
 
 
 <style scoped>
+.crdclr{
+  background-color: black;
+}
 </style>

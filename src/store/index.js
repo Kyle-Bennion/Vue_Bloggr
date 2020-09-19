@@ -54,10 +54,11 @@ export default new Vuex.Store({
     },
     async createBlog({commit}, newBlog){
       try {
+
         let res = await api.post("blogs", newBlog)
         commit("addBlog", res.data)
         commit("setActiveBlog", res.data.id)
-        router.push({name: "ActiveBlog", params:{id: res.data.id}})
+        // router.push({name: "ActiveBlog", params:{id: res.data.id}})
       } catch (error) {
         console.error(error);
       }
