@@ -46,7 +46,7 @@
           </div>
           <div class="form-group">
           </div>
-          <button type="submit" class="btn btn-primary" @click="addComment">Submit</button>
+          <button type="submit" class="btn btn-primary" @click.prevent="addComment">Submit</button>
         </form>
         <comment-component v-for="comment in comments" :key="comment.id" :commentProp="comment" />
       </div>

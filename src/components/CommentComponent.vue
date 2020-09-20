@@ -2,6 +2,7 @@
   <div class="comment-component">
     <div class="card-header">{{commentProp.creator.name}}</div>
     <div class="card-body">{{commentProp.body}}</div>
+    <button class="btn btn-danger" @click="deleteComment">Delete comment</button>
   </div>
 </template>
 
@@ -14,8 +15,14 @@ export default {
     return {}
   },
   computed:{},
-  methods:{},
-  components:{}
+  methods:{
+    deleteComment(){
+      this.$store.dispatch("deleteComment",this.commentProp)
+    }
+  },
+  components:{
+
+  }
 }
 </script>
 

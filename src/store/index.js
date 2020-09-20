@@ -33,7 +33,7 @@ export default new Vuex.Store({
     },
     setComments(state, comments){
       state.comments = comments
-    }
+    },
   },
   actions: {
     async getProfile({ commit }) {
@@ -103,6 +103,14 @@ export default new Vuex.Store({
         commit("setComments", res.data)
       } catch (error) {
         console.error(error);
+      }
+    },
+    async deleteComment({commit , dispatch}, commentData){
+      try {
+        let res = await api.delete('comments/'+ commentData.id)
+        dispatch("getComments", commentData.blog)
+      } catch (error) {
+        console.error();
       }
     }
   },
