@@ -1,15 +1,15 @@
 <template>
-  <div class="CommentComponent">
-    <div>
-
-    </div>
+  <div class="comment-component">
+    <div class="card-header">{{commentProp.creator.name}}</div>
+    <div class="card-body">{{commentProp.body}}</div>
   </div>
 </template>
 
 
 <script>
 export default {
-  name: 'component',
+  name: 'comment-component',
+  props: ['commentProp'],
   data(){
     return {}
   },

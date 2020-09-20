@@ -2,8 +2,7 @@
   <div class="col-3 p-2">
     <router-link
       :to="{name:'ActiveBlog', params:{blogId: blogProp.id}}"
-      class="card text-dark spcbkg"
-    >
+      class="card text-dark spcbkg">
       <img class="card-img-top" :src="blogProp.creator.picture" alt />
       <div class="card-body">
         <h4 class="card-title">{{blogProp.title}}</h4>

@@ -29,7 +29,10 @@ export default new Vuex.Store({
       state.blogs = state.blogs.filter(b => b.id != id)
     },
     setComment(state, comment){
-      state.comments = comment
+      state.comments.push(comment)
+    },
+    setComments(state, comments){
+      state.comments = comments
     }
   },
   actions: {
@@ -45,7 +48,6 @@ export default new Vuex.Store({
       try {
         let res = await api.get("blogs")
         commit("setBlogs", res.data)
-        console.log(res)
       } catch (error) {
         console.error(error);
       }
@@ -54,7 +56,6 @@ export default new Vuex.Store({
       try {
         let res = await api.get("blogs/" + blogId)
         commit("setActiveBlog", res.data)
-        commit("setComments", res)
       } catch (error) {
         console.error(error);
       }
@@ -87,17 +88,19 @@ export default new Vuex.Store({
         console.error(error);
       }
     },
-    // async getAllComments({commit}){
-    //   try {
-    //     let res = 
-    //   } catch (error) {
-    //     console.error(error);
-    //   }
-    // }
     async createComment({commit, dispatch}, commentData){
       try {
         let res = await api.post("comments", commentData)
         commit("setComment", res.data)
+        dispatch("getComments", commentData.blog)
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    async getComments({commit}, blogId){
+      try {
+        let res = await api.get('blogs/' + blogId + '/comments')
+        commit("setComments", res.data)
       } catch (error) {
         console.error(error);
       }
