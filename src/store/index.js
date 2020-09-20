@@ -83,7 +83,6 @@ export default new Vuex.Store({
       try {
         let res = await api.put("blogs/" + blogData.id, blogData)
         commit("setActiveBlog", res.data)
-
       } catch (error) {
         console.error(error);
       }
@@ -111,6 +110,14 @@ export default new Vuex.Store({
         dispatch("getComments", commentData.blog)
       } catch (error) {
         console.error();
+      }
+    },
+    async editComment({commit, dispatch}, commentData){
+      try {
+        let res = await api.put("comments/" + commentData._id, commentData.body)
+        dispatch("getComments", commentData.blog)
+      } catch (error) {
+        console.error(error);
       }
     }
   },
