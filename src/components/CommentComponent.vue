@@ -1,16 +1,16 @@
 <template>
   <div class="comment-component">
-    <div class="card-header">{{commentProp.creator.name}}</div>
+    <div class="card-header my-2">{{commentProp.creator.name}}</div>
     <div class="card-body">{{commentProp.body}}</div>
     <form class="form-inline" @submit.prevent="editComment">
       <input
     type="text"
     class="form-control"
-    placeholder="Edit Comment"
+    placeholder="Edit Comment..."
     aria-describedby="helpId"
     v-model="commentData.body"
   />
-    <button class="btn btn-warning" @click="editComment(commentProp._id)">Edit Comment</button>
+    <button class="btn" style="color: blue" @click="editComment(commentProp._id)">Edit Comment</button>
     <button class="btn btn-danger" @click="deleteComment">Delete Comment</button>
     </form>
   </div>
@@ -49,5 +49,7 @@ export default {
 
 
 <style scoped>
-
+.crdhdr{
+  background-color: cornflowerblue;
+}
 </style>

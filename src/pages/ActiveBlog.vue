@@ -1,5 +1,6 @@
 <template>
-  <div class="row d-flex justify-content-around">
+<div class="card ">
+  <div class="row d-flex justify-content-around text-center">
     <div v-if="blog.id" class="card col-6">
       <h6 class="card-title card-header text-center">{{profile.name}}</h6>
       <img v-if="blog.imgUrl" class="card-img-top" :src="blog.imgUrl" alt="Card image cap" />
@@ -27,9 +28,10 @@
             aria-describedby="helpId"
             v-model="blogData.body"
           />
-          <button type="submit" class="btn btn-warning">Edit Blog</button>
+          <button type="submit" class="btn btnclr">Edit Blog</button>
           <button class="btn btn-danger" @click="deleteBlog">Delete Blog</button>
         </form>
+</div>
       </div>
       <div class="card mb-2">
         <form>
@@ -107,5 +109,8 @@ export default {
 img {
   height: 250px;
   width: 250px;
+}
+.btnclr{
+  background-color: cadetblue;
 }
 </style>

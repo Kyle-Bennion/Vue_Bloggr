@@ -2,15 +2,10 @@
   <nav class="navbar navbar-expand-lg navbar-light bgspclr">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
-        <img alt="Vue logo" src="../assets/logo.png" style="transform: rotate(-90deg);width: 25px;" />
-        <img
-          alt="Vue logo"
-          src="../assets/logo.png"
-          style="transform: rotate(-90deg);width: 25px;margin-top: -10px;"
-        />
+        <img class="imgSize" src="../assets/Bloggimg2.png" alt="">
       </div>
       <div>
-        <h3 style="color: green">loggr</h3>
+        <h3 style="color: black">loggr</h3>
       </div>
     </router-link>
     <button
@@ -27,14 +22,14 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item" :class="{ active: $route.name == 'Home' }">
-          <router-link :to="{ name: 'Home' }" class="nav-link">Home</router-link>
+          <router-link :to="{ name: 'Home' }" class="nav-link"> <b>Home</b> </router-link>
         </li>
         <li
           class="nav-item"
           v-if="$auth.isAuthenticated"
           :class="{ active: $route.name == 'Profile' }"
         >
-          <router-link class="nav-link" :to="{ name: 'Profile' }">Profile</router-link>
+          <router-link class="nav-link" :to="{ name: 'Profile' }"> <b>Profile</b> </router-link>
         </li>
       </ul>
       <span class="navbar-text">
@@ -70,5 +65,8 @@ export default {
 <style scoped>
 .bgspclr{
 background-color:#f5faf9 ;
+}
+.imgSize{
+  max-height: 40px;
 }
 </style>
